@@ -7,11 +7,25 @@ namespace ToDoList.Models
   public class Item
   {
     private string _description;
+    private  int _id;
+    private string _name;
     private static List<Item> _instances = new List<Item> {};
 
-    public Item (string description)
+    public Item (string description, string name)
     {
       _description = description;
+      _instances.Add(this);
+      _name = name;
+      _id =_instances.Count;
+    }
+    public string GetName()
+    {
+      return _name;
+    }
+
+    public void SetName(string newName)
+    {
+      _name = newName;
     }
     public string GetDescription()
     {
@@ -21,18 +35,29 @@ namespace ToDoList.Models
     {
       _description = newDescription;
     }
+
+    public int GetId()
+   {
+     return _id;
+   }
     public static List<Item> GetAll()
     {
       return _instances;
     }
-    public void Save()
-    {
-       _instances.Add(this);
-    }
+    // public void Save()
+    // {
+    //    _instances.Add(this);
+    // }
     public static void ClearAll()
     {
       _instances.Clear();
     }
+
+    public static Item Find(int searchId)
+   {
+     return _instances[searchId-1];//value for list
+   }
+
   }
 }
 
