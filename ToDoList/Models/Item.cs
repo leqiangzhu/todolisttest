@@ -14,8 +14,8 @@ namespace ToDoList.Models
     public Item (string description, string name)
     {
       _description = description;
-      _instances.Add(this);
       _name = name;
+      _instances.Add(this);
       _id =_instances.Count;
     }
     public string GetName()

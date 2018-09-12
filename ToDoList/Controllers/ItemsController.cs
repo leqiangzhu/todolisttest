@@ -22,8 +22,8 @@ namespace ToDoList.Controllers
     }
     [HttpPost("/items")]
     public ActionResult Create()
-    {
-      Item newItem = new Item(Request.Form["new-item"], Request.Form["new-name"]);
+    {//]
+      Item newItem = new Item(Request.Form["new-item"],Request.Form["new-name"] );
       //newItem.Save();
       List<Item> allItems = Item.GetAll();
       return View("Index", allItems);
@@ -43,6 +43,8 @@ namespace ToDoList.Controllers
            Item item = Item.Find(id);
            return View(item);
        }
+
+
 
 
   }
