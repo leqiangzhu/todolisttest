@@ -48,6 +48,7 @@ namespace ToDoList.Controllers
       Category foundCategory = Category.Find(categoryId);
       Item newItem = new Item(itemDescription);
       newItem.SetCategoryName(foundCategory.GetName());
+      newItem.SetCategoryId(foundCategory.GetId()); 
       foundCategory.AddItem(newItem);
       List<Item> categoryItems = foundCategory.GetItems();
       model.Add("items", categoryItems);

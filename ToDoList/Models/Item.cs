@@ -11,6 +11,7 @@ namespace ToDoList.Models
   //  private string _name;
     private static List<Item> _instances = new List<Item> {};
     private string _categoryName;
+    private int _categoryId;
     public Item (string description)
     {
       _description = description;
@@ -18,6 +19,8 @@ namespace ToDoList.Models
       _instances.Add(this);
       _id =_instances.Count;
       _categoryName = "";
+      _categoryId=0;
+
     }
 
     // public string GetName()
@@ -69,7 +72,13 @@ namespace ToDoList.Models
      {
        return _categoryName;
      }
-
+  public void SetCategoryId(int idNum)
+  {
+    _categoryId = idNum;
+  }
+  public  int GetategoryId(){
+    return  _categoryId;
+  }
   }
 }
 

@@ -2,7 +2,7 @@
 <ul>
   @foreach (var item in Model)
   {
-    <li><a href='/categories/(@item.GetCategoryName()).GetId()/items/@item.GetId()'>@item.GetDescription()</a></li>
+    <li><a href='/categories/@item.GetategoryId()/items/@item.GetId()'>@item.GetDescription()</a></li>
   }
 <!-- should give getname getid method---->
 </ul>
