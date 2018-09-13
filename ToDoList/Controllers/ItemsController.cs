@@ -14,6 +14,9 @@ namespace ToDoList.Controllers
 
       List<Item> allItems = Item.GetAll();
       return View(allItems);
+      
+
+
     }
     [HttpGet("/items/new")]
     public ActionResult CreateForm()
