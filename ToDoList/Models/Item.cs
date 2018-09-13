@@ -10,13 +10,14 @@ namespace ToDoList.Models
     private  int _id;
   //  private string _name;
     private static List<Item> _instances = new List<Item> {};
-
+    private string _categoryName;
     public Item (string description)
     {
       _description = description;
     //  _name = name;
       _instances.Add(this);
       _id =_instances.Count;
+      _categoryName = "";
     }
 
     // public string GetName()
@@ -58,6 +59,16 @@ namespace ToDoList.Models
    {
      return _instances[searchId-1];//value for list
    }
+
+
+   public void SetCategoryName(string cat)
+    {
+      _categoryName = cat;
+    }
+        public string GetCategoryName()
+     {
+       return _categoryName;
+     }
 
   }
 }

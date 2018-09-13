@@ -2,14 +2,14 @@
 <ul>
   @foreach (var item in Model)
   {
-    <li><a href='/items/@item.GetId()'>@item.GetDescription()</a></li>
+    <li><a href='/categories/(@item.GetCategoryName()).GetId()/items/@item.GetId()'>@item.GetDescription()</a></li>
   }
-
+<!-- should give getname getid method---->
 </ul>
 
 <li><img src='https://www.cstatic-images.com/stock/900x600/1489006506428.jpg'/></li>
 <p>  </p>
-<a href='/items/new'>Add new item</a>
+<a href='./items/new'>Add new item</a>
 
 <form action="/items/delete" method="post">
 <button type="submit" name="button">Clear All Items</button>
