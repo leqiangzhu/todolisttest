@@ -29,22 +29,30 @@ namespace ToDoList.Controllers
             return View("Index", allCategories);
         }
 
-        [HttpGet("/categories/{categoryId}/items/new")]
-   public ActionResult CreateForm(int categoryId)
-   {
-      Dictionary<string, object> model = new Dictionary<string, object>();
-      Category category = Category.Find(categoryId);
-      return View(category);
-   }
-   [HttpGet("/categories/{categoryId}/items/{itemId}")]
-   public ActionResult Details(int categoryId, int itemId)
-   {
-      Item item = Item.Find(itemId);
-      Dictionary<string, object> model = new Dictionary<string, object>();
-      Category category = Category.Find(categoryId);
-      model.Add("item", item);
-      model.Add("category", category);
-      return View(item);
-   }
+        [HttpGet("/categories/{id}")]
+       public ActionResult Details(int id)
+       {
+           Dictionary<string, object> model = new Dictionary<string, object>();
+           Category selectedCategory = Category.Find(id);
+           List<Item> categoryItems = selectedCategory.GetItems();
+           model.Add("category", selectedCategory);
+           model.Add("items", categoryItems);
+           return View(model);
+       }
+
+
+       [HttpPost("/categories/{id}/items")]
+       public ActionResult CreateItem(int categoryId, string itemDescription)
+       {
+         Dictionary<string, object> model = new Dictionary<string, object>();
+         Category foundCategory = Category.Find(categoryId);
+         Item newItem = new Item(itemDescription);
+         foundCategory.AddItem(newItem);
+         List<Item> categoryItems = foundCategory.GetItems();
+         model.Add("items", categoryItems);
+         model.Add("category", foundCategory);
+         return View("Details", model);
+       }
+
     }
 }

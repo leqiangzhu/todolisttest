@@ -8,25 +8,25 @@ namespace ToDoList.Models
   {
     private string _description;
     private  int _id;
-    private string _name;
+  //  private string _name;
     private static List<Item> _instances = new List<Item> {};
 
-    public Item (string description, string name)
+    public Item (string description)
     {
       _description = description;
-      _name = name;
+    //  _name = name;
       _instances.Add(this);
       _id =_instances.Count;
     }
-    public string GetName()
-    {
-      return _name;
-    }
-
-    public void SetName(string newName)
-    {
-      _name = newName;
-    }
+    // public string GetName()
+    // {
+    //   return _name;
+    // }
+    //
+    // public void SetName(string newName)
+    // {
+    //   _name = newName;
+    // }
     public string GetDescription()
     {
       return _description;
